@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #jump {
+            color: red;
+            font-size: xx-large;
+            font-weight: bold;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Congratulations! The payment is successful!</h1>
+    <span id="jump">10</span> seconds left to return to the home page
+    <p><button>Return now</button></p>
+
+    <script>
+        window.onload = function () {
+            var jump = document.getElementById("jump");
+
+            var countdown = 9;
+            setInterval(function () {
+                jump.innerText = countdown--;
+                if (countdown == 0) {
+                    location.href = './index.html';
+                }
+            }, 1000);
+
+
+            document.getElementsByTagName("button")[0].onclick = function () {
+                location.href = './index.html'
+            }
+        }
+    </script>
+</body>
+
+</html>
