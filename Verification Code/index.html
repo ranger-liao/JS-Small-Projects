@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            align-items: center;
+            margin: 10px;
+        }
+
+        .vCode {
+            border: 1px black solid;
+            width: 300px;
+            align-self: center;
+        }
+
+        .codeShow {
+            padding: 10px;
+        }
+
+        #checkCode {
+            font-size: xx-large;
+            background: lightgrey;
+            color: blue;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="vCode">
+        <div class="codeShow">
+            <span class="code" id="checkCode"></span>
+            <button id="linkbt">Change</button>
+        </div>
+        <div class="inputCode">
+            <label for="inputCode">验证码：</label>
+            <input type="text" id="inputCode">
+            <span id="textShow"></span>
+        </div>
+        <p><button id="btn">确定</button></p>
+    </div>
+
+    <script>
+
+        window.onload = function () {
+
+            function getCode() {
+                var arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+                var str = '';
+                for (var i = 0; i < 6; i++) {
+                    var num = Math.round(Math.random() * 15);
+                    str += arr[num];
+                }
+                return str;
+            }
+
+            var checkCode = document.getElementById("checkCode");
+            checkCode.innerText = getCode();
+
+            document.getElementById("linkbt").onclick = function () {
+                checkCode.innerText = getCode();
+            }
+
+            var btn = document.getElementById("btn");
+
+            btn.onclick = function () {
+                var code = document.getElementById('checkCode').innerText;
+                var inputCode = document.getElementById("inputCode").value;
+                if (code != inputCode) {
+                    alert("Wrong Code!");
+                    return false;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
