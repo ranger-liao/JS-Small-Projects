@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul {
+            overflow: hidden;
+        }
+
+        li {
+            width: 100px;
+            height: 40px;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            float: left;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        div {
+            width: 406px;
+            height: 406px;
+            border: 1px solid #ccc;
+        }
+
+        img {
+            width: 406px;
+            height: 650px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>李易峰</li>
+        <li>陈星旭</li>
+        <li>毕雯珺</li>
+        <li>张继科</li>
+    </ul>
+    <div>
+        <img src="./li.jpg" alt="" style="display:block;">
+        <img src="./chen.jpg" alt="">
+        <img src="./bi.jpg" alt="">
+        <img src="./zhang.jpg" alt="">
+    </div>
+
+    <script>
+        let li = document.getElementsByTagName('li');
+        let img = document.getElementsByTagName('img');
+
+        for (let i = 0; i < li.length; i++) {
+
+            li[i].onmouseover = function () {
+                li[i].style.backgroundColor = 'white';
+
+                for (let j = 0; j < img.length; j++) {
+                    img[j].style.display = 'none';
+                }
+                img[i].style.display = 'block';
+            }
+
+            li[i].onmouseout = function () {
+                li[i].style.backgroundColor = '#eee';
+            }
+        }
+    </script>
+</body>
+
+</html>
