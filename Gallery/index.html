@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .big {
+            width: 400px;
+            height: 650px;
+        }
+
+        .small>img {
+            width: 97px;
+            height: 150px;
+        }
+
+        .main {
+            margin: 0 auto;
+            padding: 0;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div>
+            <img src="./bi.jpg" alt="" class="big">
+        </div>
+        <div class="small">
+            <img src="./bi.jpg" alt="">
+            <img src="./chen.jpg" alt="">
+            <img src="./li.jpg" alt="">
+            <img src="./zhang.jpg" alt="">
+        </div>
+    </div>
+
+    <script>
+        let img = document.getElementsByTagName('img');
+
+        for (i = 1; i < img.length; i++) {
+            img[i].onmouseover = function () {
+                img[0].src = this.src;
+                this.style.border = '3px solid yellowgreen';
+            }
+
+            img[i].onmouseout = function () {
+                this.style.border = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>
