@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            margin: 10px;
+        }
+
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <input type="checkbox">尼古拉斯赵四<br>
+        <input type="checkbox">莱昂纳多刘能<br>
+        <input type="checkbox">约翰尼宋小宝<br>
+        <input type="checkbox">布拉德小沈阳<br>
+    </form>
+    <button>全选</button>
+    <button>全不选</button>
+    <button>反选</button>
+
+    <script>
+        let btn = document.getElementsByTagName('button');
+        let input = document.getElementsByTagName('input');
+        btn[0].onclick = function () {
+            for (let i = 0; i < input.length; i++) {
+                input[i].checked = true;
+            }
+        }
+        btn[1].onclick = function () {
+            for (let i = 0; i < input.length; i++) {
+                input[i].checked = false;
+            }
+        }
+
+        btn[2].onclick = function () {
+            for (let i = 0; i < input.length; i++) {
+                input[i].checked = !input[i].checked;
+            }
+        }
+    </script>
+</body>
+
+</html>
