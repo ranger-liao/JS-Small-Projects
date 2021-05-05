@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #bar {
+            border: 3px solid red;
+            border-radius: 10%;
+            width: 500px;
+            height: 50px;
+        }
+
+        #prog {
+            width: 0;
+            height: 50px;
+            background-color: yellowgreen;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bar">
+        <div id="prog">
+            <span>0</span><span>%</span>
+        </div>
+    </div>
+    <p><button id="btn">Start</button></p>
+
+    <script>
+        let btn = document.getElementById("btn");
+        let prog = document.getElementById("prog");
+        let timer = null;
+        btn.onclick = function () {
+            let num = 0;
+            if (timer == null) {
+                timer = setInterval(
+                    function () {
+                        num += 30;
+                        prog.style.width = num + 'px';
+                        prog.innerHTML = Math.ceil(num / 500 * 100) + '%';
+                        if (num == 500) {
+                            clearInterval(timer);
+                        }
+                    }, 500
+                );
+            }
+        }
+
+    </script>
+</body>
+
+</html>
