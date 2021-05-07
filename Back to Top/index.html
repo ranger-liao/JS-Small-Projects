@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            height: 5000px;
+        }
+
+        #top {
+            width: 100px;
+            height: 100px;
+            background-color: #bbb;
+            text-align: center;
+            line-height: 100px;
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h2>返回首屏</h2>
+        <div id="top">返回</div>
+    </div>
+
+    <script>
+        let top = document.getElementById('top');
+        let content = document.getElementsByClassName('content')[0];
+
+        window.onscroll = function () {
+            let res = content.scrollTop;
+            if (res >= 40) {
+                top.style.display = 'block';
+            } else {
+                top.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>
