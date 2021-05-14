@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box {
+        width: 10px;
+        height: 10px;
+        background-color: greenyellow;
+        position: absolute;
+    }
+</style>
+
+<body>
+    <h2>鼠标绑定方块</h2>
+    <div id="box"></div>
+
+    <script>
+
+        document.onmousemove = function (e) {
+            let box = document.getElementById('box');
+            let event = e || window.e;
+            box.style.left = event.clientX - (box.offsetWidth / 2) + 'px';
+            box.style.top = event.clientY - (box.offsetHeight / 2) + 'px';
+        }
+    </script>
+</body>
+
+</html>
