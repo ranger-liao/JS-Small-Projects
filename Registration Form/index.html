@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .info {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        tr {
+            height: 40px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 630px;
+            text-align: center;
+
+        }
+
+        thead {
+            background-color: yellowgreen;
+        }
+
+        input {
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="info">
+        <legend>
+            <h3>Student Information</h3>
+        </legend>
+        <p><span>Name: </span><input type="text" id="name"></p>
+        <p><span>Age: </span><input type="text" id="age"></p>
+        <p><span>Gender: </span>
+            <select name="" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </p>
+        <p><span>Mobile: </span><input type="text" id="mobile"></p>
+        <p>
+            <button id="btn">Submit</button>
+        </p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Mobile</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+        </tbody>
+    </table>
+
+    <script>
+        let name = document.getElementById('name');
+        let gender = document.getElementById('gender');
+        let age = document.getElementById('age');
+        let mobile = document.getElementById('mobile');
+        let btn = document.getElementById('btn');
+        let input = document.getElementsByTagName('input');
+        let tbody = document.getElementsByClassName('tbody')[0];
+        let data = [];
+        btn.onclick = function () {
+            let obj = { name: name.value, age: age.value, gender: gender.value, mobile: mobile.value };
+            data.push(obj);
+
+            let tr = '';
+            data.forEach((item, index) => {
+                tr += "<tr class='newTr'>" +
+                    "<td> " + item.name + "</td> " +
+                    "<td>" + item.age + "</td>" +
+                    "<td>" + item.gender + "</td>" +
+                    "<td>" + item.mobile + "</td>" +
+                    "<td onclick = 'del(" + index + ")'><a>Delete</a></td>" +
+                    "</tr>";
+
+                tbody.innerHTML = tr;
+            });
+        }
+
+        function del(index) {
+            newTr = document.getElementsByClassName('newTr')[index];
+            data.splice(index, 1);
+            tbody.removeChild(newTr);
+        }
+
+    </script>
+</body>
+
+</html>
