@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #data {
+            width: 260px;
+            border: 1px solid black;
+            margin: 20px auto;
+        }
+
+        p {
+            display: flex;
+        }
+
+        h4 {
+            text-align: center;
+        }
+
+        p span {
+            padding: 0 10px;
+        }
+
+        #year {
+            text-align: center;
+            flex: 1;
+            font-size: larger;
+        }
+
+        #prev,
+        #next {
+            cursor: pointer;
+            margin: 5px;
+            width: 50px;
+            height: 20px;
+            border-radius: 5px;
+        }
+
+        ul {
+            list-style: none;
+            overflow: hidden;
+
+        }
+
+        #day {
+            background-color: #ccc;
+        }
+
+        li {
+            float: left;
+            width: 30px;
+            height: 34px;
+            margin: 1px 1px;
+            border: 2px solid rgba(0, 0, 0, 0);
+            line-height: 34px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .hover:hover {
+            border: 2px solid red;
+        }
+
+        .active {
+            color: red;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="data">
+        <p>
+            <button id="prev">Prev</button>
+            <span id="year"></span>
+            <button id="next">Next</button>
+        </p>
+        <h4 id="month">May</h4>
+        <ul id="day">
+            <li>Sun</li>
+            <li>Mon</li>
+            <li>Tue</li>
+            <li>Wed</li>
+            <li>Thu</li>
+            <li>Fri</li>
+            <li>Sat</li>
+        </ul>
+        <ul id="date">
+
+        </ul>
+    </div>
+
+    <script>
+        let date = new Date();
+        add();
+        function add() {
+            let cYear = date.getFullYear();
+            let cMonth = date.getMonth();
+            let cDay = date.getDate();
+            let arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            let week = new Date(cYear, cMonth, 1).getDay();
+            let days = new Date(cYear, cMonth + 1, -1).getDate() + 1;
+
+
+            document.getElementById('year').innerHTML = cYear;
+            document.getElementById('month').innerHTML = arr[cMonth];
+
+            let html = '';
+
+            for (var i = 0; i < week; i++) {
+                html += '<li></li>';
+            }
+
+            for (var i = 1; i <= days; i++) {
+                if (i == cDay) {
+                    html += '<li class="active hover">' + i + '</li>';
+                } else {
+                    html += '<li class="hover">' + i + '</li>';
+                }
+            }
+
+            document.getElementById('date').innerHTML = html;
+        }
+
+        document.getElementById('prev').onclick = function () {
+            date.setMonth(date.getMonth() - 1);
+            add();
+        }
+
+        document.getElementById('next').onclick = function () {
+            date.setMonth(date.getMonth() + 1);
+            add();
+        }
+    </script>
+</body>
+
+</html>
